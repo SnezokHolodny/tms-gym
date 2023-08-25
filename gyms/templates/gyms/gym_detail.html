@@ -5,10 +5,12 @@
     <p>время работы - {{ gym.time_work }}   ({{ gym.adress }})</p>
     <ul>
         <h4>Тренера в зале:</h4>
-        {% for gym in gym.trainers.all %}
-            <li>{{ gym.name }}</li>
-            <h8>{{ gym.year_old }} года</h8>
-            <p>время работы - {{ gym.time_work }}</p>
+        <ul>
+        {% for trainer in gym.trainers.all %}
+            <li><a href="{% url 'gyms:trainer_detail' trainer.id %}">{{ trainer.name }}</a></li>
+            <h8>{{ trainer.year_old }} лет</h8>
+            <p>время работы - {{ trainer.time_work }}</p>
         {% endfor %}
+        </ul>
     </ul>
 {% endblock %}

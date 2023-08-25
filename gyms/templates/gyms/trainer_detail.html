@@ -2,8 +2,13 @@
 
 {% block body %}
     <h1>{{ trainer.name }}</h1>
-        <p>время работы - {{ trainer.time_work }}</p>
+    <h>{{ trainer.year_old }} лет</h>
+    <p>время работы - {{ trainer.time_work }}</p>
     <ul>
-        <li><a href="{% url 'gyms:gym_detail' gym.id %}">{{ gym.name }}</a>Место работы: Тренажерный зал "{{ trainer.gym.name }}"</li>
+        <li>Место работы: Тренажерный зал
+            <a href="{% url 'gyms:gym_detail' trainer.gym.id %}">
+            "{{ trainer.gym.name }}"
+            </a>
+        </li>
     </ul>
 {% endblock %}
