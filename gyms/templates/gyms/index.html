@@ -1,15 +1,19 @@
+{% extends 'gyms/base.html' %}
 
-<html>
-<head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Trenagerki</title>
-</head>
-<body>
+{% block body %}
+{% if not gyms %}
+    <h1>There are no gyms</h1>
+{% else %}
     <h1>Какой спортзал по вкусу?</h1>
-    {% for gym in gyms %}
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item"><a href="/gyms/{{ gym.id }}">"{{ gym.name }}" ------------------------время работы - {{ gym.time_work }}({{ gym.adress }})</a></li>
-        </ul>
-    {% endfor %}
-</body>
-</html>
+    <ul>
+        {% for gym in gyms %}
+            <li>
+                <a href="{% url 'gyms:gym_detail' gym.id %}">{{ gym.name }}</a>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="/gyms/{{ gym.id }}">"{{ gym.name }}" ------------------------время работы - {{ gym.time_work }}   ({{ gym.adress }})</a></li>
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}
