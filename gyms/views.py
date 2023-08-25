@@ -10,3 +10,8 @@ def gym_detail(request, gym_id: int):
     return render(request, 'gyms/gym_detail.html', {
         'gym': get_object_or_404(Gym, id=gym_id),
     })
+
+def trainer_detail(request, trainer_id: int):
+    return render(request, 'gyms/trainer_detail.html', {
+        'trainer': get_object_or_404(Trainer, id=trainer_id),
+    })

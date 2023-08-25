@@ -4,13 +4,13 @@
 {% if not gyms %}
     <h1>There are no gyms</h1>
 {% else %}
-    <h1>Какой спортзал по вкусу?</h1>
+    <h1>Какой тренажерный зал по вкусу?</h1>
     <ul>
         {% for gym in gyms %}
             <li>
                 <a href="{% url 'gyms:gym_detail' gym.id %}">{{ gym.name }}</a>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="/gyms/{{ gym.id }}">"{{ gym.name }}" ------------------------время работы - {{ gym.time_work }}   ({{ gym.adress }})</a></li>
+                    <li class="list-group-item"> время работы - {{ gym.time_work }}   ({{ gym.adress }})</a></li>
                 </ul>
             </li>
         {% endfor %}

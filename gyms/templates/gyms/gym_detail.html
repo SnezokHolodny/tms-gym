@@ -2,4 +2,13 @@
 
 {% block body %}
     <h1>{{ gym.name }}</h1>
+    <p>время работы - {{ gym.time_work }}   ({{ gym.adress }})</p>
+    <ul>
+        <h4>Тренера в зале:</h4>
+        {% for gym in gym.trainers.all %}
+            <li>{{ gym.name }}</li>
+            <h8>{{ gym.year_old }} года</h8>
+            <p>время работы - {{ gym.time_work }}</p>
+        {% endfor %}
+    </ul>
 {% endblock %}

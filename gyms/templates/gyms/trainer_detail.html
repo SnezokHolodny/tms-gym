@@ -1,0 +1,9 @@
+{% extends 'gyms/base.html' %}
+
+{% block body %}
+    <h1>{{ trainer.name }}</h1>
+        <p>время работы - {{ trainer.time_work }}</p>
+    <ul>
+        <li><a href="{% url 'gyms:gym_detail' gym.id %}">{{ gym.name }}</a>Место работы: Тренажерный зал "{{ trainer.gym.name }}"</li>
+    </ul>
+{% endblock %}
