@@ -3,6 +3,9 @@ from .models import Gym, Trainer
 
 
 
+class TrainerInline(admin.TabularInline):
+    model = Trainer
+    extra = 0
 
 
 @admin.register(Trainer)
@@ -21,6 +24,7 @@ class GymAdmin(admin.ModelAdmin):
     list_display = ['name', 'time_work', 'adress']
     list_filter = ['name']
     search_fields = ['name']
+    inlines = [TrainerInline]
 
 
 
