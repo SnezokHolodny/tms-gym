@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Gym, Trainer, Abonement, PriceAbonement, NameAbonement, TimeAbonement, Profile
+from .models import Gym, Trainer, Abonement, Profile
 
 
 
@@ -19,6 +19,7 @@ class TrainerAdmin(admin.ModelAdmin):
     search_fields = ['name', 'year_old']
 
 
+
 @admin.register(Gym)
 class GymAdmin(admin.ModelAdmin):
     list_display = ['name', 'time_work', 'adress']
@@ -27,11 +28,17 @@ class GymAdmin(admin.ModelAdmin):
     inlines = [TrainerInline]
 
 
+
 @admin.register(Abonement)
 class AbonementAdmin(admin.ModelAdmin):
     list_display = ['trainer', 'gym', 'profile']
 
+class AbonementInline(admin.TabularInline):
+    model = Abonement
+    extra = 0
+    inlines = [TrainerInline]
+
+
+
+
 admin.site.register(Profile)
-admin.site.register(PriceAbonement)
-admin.site.register(NameAbonement)
-admin.site.register(TimeAbonement)

@@ -30,43 +30,20 @@ class Abonement(models.Model):
                                 related_name='abonements')
     profile = models.ForeignKey('Profile', on_delete=models.CASCADE,
                                 related_name='abonements')
+    time = models.CharField(max_length=100, default='-')
 
     def __str__(self):
-        return self.profile
+        return f'- {self.id} - {self.profile} - {self.trainer} - {self.gym}'
 
 
-class PriceAbonement(models.Model):
-    price = models.IntegerField(default=0)
-    abonement = models.ForeignKey(Abonement, on_delete=models.CASCADE,
-                                          null=True, blank=True, related_name='price')
 
-    def __str__(self):
-        return self.price
-
-
-class NameAbonement(models.Model):
-    name = models.CharField(max_length=100)
-    abonement = models.ForeignKey(Abonement, on_delete=models.CASCADE,
-                                          null=True, blank=True, related_name='name')
-
-    def __str__(self):
-        return self.name
-
-
-class TimeAbonement(models.Model):
-    time = models.CharField(max_length=100)
-    abonement = models.ForeignKey(Abonement, on_delete=models.CASCADE,
-                                          null=True, blank=True, related_name='time_abonement')
-
-    def __str__(self):
-        return self.time
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
 
 
