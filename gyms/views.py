@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpRequest
 from .models import Gym, Trainer
@@ -15,3 +16,11 @@ def trainer_detail(request, trainer_id: int):
     return render(request, 'gyms/trainer_detail.html', {
         'trainer': get_object_or_404(Trainer, id=trainer_id),
     })
+
+@login_required
+def add_abonement(request: HttpRequest):
+    assert request.method == 'POST'
+    trainer_id = request.POST['trainer_id']
+    trainer = get_object_or_404(Trainer, id=trainer_id)
+    return redirect(request, 'gyms/trainer_detail', trainer)
+

@@ -10,5 +10,12 @@
             "{{ trainer.gym.name }}"
             </a>
         </li>
+        {% if user.is_authenticated %}
+            <form action="{% url 'gyms:add_abonement' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="trainer_id" value="{{ trainer.id }}">
+                <input type="submit" value="Добавить абонемент" class="btn btn-info"/>
+            </form>
+        {% endif %}
     </ul>
 {% endblock %}
