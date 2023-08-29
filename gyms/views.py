@@ -30,5 +30,10 @@ def add_abonement(request: HttpRequest):
     abonement = Abonement.objects.create(gym=gym, trainer=trainer, profile=profile, time=request.POST['time'])
     return redirect('gyms:gym', request.POST['gym_id'])
 
+def delete_abonement(request):
+    abonement = get_object_or_404(Abonement, gym__id=request.POST['gym_id'], profile=request.user.profile)
+    abonement.delete()
+    request.user.profile.save()
+    return redirect('gyms:gym', request.POST['gym_id'])
 
 
