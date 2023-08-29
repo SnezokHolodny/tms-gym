@@ -33,7 +33,7 @@ class Abonement(models.Model):
     time = models.CharField(max_length=100, default='-')
 
     def __str__(self):
-        return f'- {self.id} - {self.profile} - {self.trainer} - {self.gym}'
+        return f'{self.id} - {self.profile} - {self.trainer} - {self.gym} - {self.time}'
 
 
 

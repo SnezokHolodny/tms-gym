@@ -8,6 +8,11 @@ class TrainerInline(admin.TabularInline):
     extra = 0
 
 
+class AbonementInline(admin.TabularInline):
+    model = Abonement
+    extra = 0
+
+
 @admin.register(Trainer)
 class TrainerAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -17,6 +22,8 @@ class TrainerAdmin(admin.ModelAdmin):
     list_display = ['name', 'year_old', 'time_work']
     list_filter = ['name', 'year_old']
     search_fields = ['name', 'year_old']
+    inlines = [AbonementInline]
+
 
 
 
@@ -29,16 +36,18 @@ class GymAdmin(admin.ModelAdmin):
 
 
 
+
 @admin.register(Abonement)
 class AbonementAdmin(admin.ModelAdmin):
-    list_display = ['trainer', 'gym', 'profile']
-
-class AbonementInline(admin.TabularInline):
-    model = Abonement
-    extra = 0
-    inlines = [TrainerInline]
+    list_display = ['trainer', 'gym', 'profile', 'time']
 
 
 
 
-admin.site.register(Profile)
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ['user']
+    list_filter = ['user']
+    search_fields = ['user']
+
+
