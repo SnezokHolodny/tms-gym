@@ -12,5 +12,22 @@
             <p>время работы - {{ trainer.time_work }}</p>
         {% endfor %}
         </ul>
-    </ul>
+        {% if user.is_authenticated %}
+            <h1>Забронировать абонемент</h1>
+            <h3>Тренеры:</h3>
+            <form action="{% url 'gyms:add_abonement' %}" method="post">
+                {% csrf_token %}
+            {% for trainer in gym.trainers.all %}
+                <input type="radio" name="trainer_id" value="{{ trainer.id }}"
+                    id="trainer_id-{{ forloop.counter }}"/>
+                <label for="trainer_id-{{ forloop.counter }}">
+                    {{ trainer.name }}
+                </label><br>
+            {% endfor %}
+                <h3>Время:</h3>
+                <input type="text" name="time" placeholder="Напишите время"/>
+                <input type="submit" value="Добавить абонемент"/>
+                <input type="hidden" name="gym_id" value="{{ gym.id }}"/>
+        {% endif %}
+        </ul>
 {% endblock %}

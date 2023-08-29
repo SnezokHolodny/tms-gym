@@ -19,6 +19,7 @@ def trainer_detail(request, trainer_id: int):
 
 @login_required
 def add_abonement(request: HttpRequest):
+    profile = request.user.profile
     assert request.method == 'POST'
     trainer_id = request.POST['trainer_id']
     trainer = get_object_or_404(Trainer, id=trainer_id)
