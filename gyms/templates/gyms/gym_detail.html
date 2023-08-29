@@ -13,6 +13,7 @@
         {% endfor %}
         </ul>
         {% if user.is_authenticated %}
+            {% if cheack_element %}
             <h1>Забронировать абонемент</h1>
             <h3>Тренеры:</h3>
             <form action="{% url 'gyms:add_abonement' %}" method="post">
@@ -28,6 +29,14 @@
                 <input type="text" name="time" placeholder="Напишите время"/>
                 <input type="submit" value="Добавить абонемент"/>
                 <input type="hidden" name="gym_id" value="{{ gym.id }}"/>
+                {% else %}
+                    <h3>У вас уже имеется абонемент на этих тренеров</h3>
+                    <form action="{% url 'gyms:delete_abonement' %}" method="post">
+                        {%csrf_token%}
+                    <input type='submit' value='Удалить абонемент'/>
+                    <input type='hiden' name='gym_id' value={{gym.id}}
+                    </form>
+                {% endif %}
         {% endif %}
         </ul>
 {% endblock %}

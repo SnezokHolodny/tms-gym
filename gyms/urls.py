@@ -8,4 +8,5 @@ urlpatterns = [
     path('gym/<int:gym_id>', views.gym_detail, name='gym_detail'),
     path('trainer/<int:trainer_id>', views.trainer_detail, name='trainer_detail'),
     path('add_abonement/', views.add_abonement, name='add_abonement'),
+    path('delete_abonement/', views.delete_abonement, name='delete_abonement'),
 ]
