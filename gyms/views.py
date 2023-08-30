@@ -57,10 +57,12 @@ def register(request):
         form = NewUserForm()
         return render(request, "registration/register.html", context={"form": form})
 
+
 @login_required
 def information_of_user(request, user_id):
     user = get_object_or_404(User, id=user_id)
-    return render(request, 'gyms/profile.html', {'user': user})
+    abonement = Abonement.objects.filter(profile=request.user.profile)
+    return render(request, 'gyms/profile.html', {'user': user, 'abonement':abonement})
 
 
 @login_required
