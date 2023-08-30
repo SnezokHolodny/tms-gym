@@ -27,14 +27,14 @@
             {% endfor %}
                 <h3>Время:</h3>
                 <input type="text" name="time" placeholder="Напишите время">
-                <input type="submit" value="Добавить абонемент">
+                <input type="submit" value="Добавить абонемент" class="btn btn-info"/>
                 <input type="hidden" name="gym_id" value="{{ gym.id }}">
                 {% else %}
-                    <h3>У вас уже имеется абонемент на этих тренеров</h3>
+                    <h3>У вас уже имеется абонемент на этот зал</h3>
                     <form action="{% url 'gyms:delete_abonement' %}" method="post">
                         {%csrf_token%}
                     <input type='submit' value='Удалить абонемент'>
-                    <input type='hidden' name='gym_id' value={{ gym.id }}>
+                    <input type='hidden' name='gym_id' value="{{ gym.id }}">
                     </form>
                 {% endif %}
         {% endif %}

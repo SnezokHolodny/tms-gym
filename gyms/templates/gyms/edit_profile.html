@@ -1,0 +1,10 @@
+{% extends 'gyms/base.html' %}
+
+{% block body %}
+    <br/><h3>Редактировать информацию профиля:</h3>
+    <form action="{% url 'gyms:edit_profile' user.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Apply">
+    </form>
+{% endblock %}
