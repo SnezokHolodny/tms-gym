@@ -2,11 +2,19 @@
 
 {% block body %}
       <h1 style="text-align:center;font-family:verdana;color:Purple">Профиль</h1>
-  <div class="row">
+    <div class="row">
         <div class="col-sm-3" style="background-color:active;"><h4 style="font-family:verdana;color:Gold";>Username:{{user.username}}</h4></div>
         <div class="col-sm-3" style="background-color:active;"><h4 style="font-family:verdana;color:Gold";>Email:{{user.email}}</h4></div>
         <div class="col-sm-3" style="background-color:active;"><h4 style="font-family:verdana;color:Gold">First_name:{{user.first_name}}</h4></div>
         <div class="col-sm-2" style="background-color:active;"><h4 style="font-family:verdana;color:Gold">Last_name:{{user.last_name}}</h4></div>
         <h5 style="text-align:mindle"><a href="{% url 'gyms:edit_information' %} " class="badge badge-danger">Edit information </a></h5>
-  </div>
+     </div>
+    <ul>
+        {% for info in abonement %}
+            <h3>{{ info.profile.user.username }}</h3>
+            <p>{{ info.trainer.name }}</p>
+            <p>{{ info.time }}</p>
+            <p>{{ info.gym }}</p>
+        {% endfor %}
+    </ul>
 {% endblock %}

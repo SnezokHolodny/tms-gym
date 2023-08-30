@@ -7,11 +7,11 @@
     <ul>
         <h4>Тренера в зале:</h4>
         <ul>
-        {% for trainer in gym.trainers.all %}
-            <li><a href="{% url 'gyms:trainer_detail' trainer.id %}">{{ trainer.name }}</a></li>
-            <h8>{{ trainer.year_old }} лет</h8>
-            <p>время работы - {{ trainer.time_work }}</p>
-        {% endfor %}
+            {% for trainer in gym.trainers.all %}
+                <li><a href="{% url 'gyms:trainer_detail' trainer.id %}">{{ trainer.name }}</a></li>
+                <h8>{{ trainer.year_old }} лет</h8>
+                <p>время работы - {{ trainer.time_work }}</p>
+            {% endfor %}
         </ul>
         {% if user.is_authenticated %}
             {% if cheack_element %}
