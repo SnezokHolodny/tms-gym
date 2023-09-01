@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-sm-4" style="background-color:active;"><h4 style="font-family:verdana;color:Green";>Имя пользователя:{{user.username}}</h4>
         <div class="col-sm-3" style="background-color:active;"><h5 style="font-family:verdana;color:Blue";>Email:{{user.email}}</h5></div>
-        <div class="col-sm-3" style="background-color:active;"><h5 style="font-family:verdana;color:Blue">Имя:{{user.first_name}}</h3></div>
+        <div class="col-sm-3" style="background-color:active;"><h5 style="font-family:verdana;color:Blue">Имя:{{user.first_name}}</h5></div>
         <div class="col-sm-2" style="background-color:active;"><h5 style="font-family:verdana;color:Blue">Фамилия:{{user.last_name}}</h5></div>
             <h1><a href="{% url 'gyms:edit_profile' user.id %}" class="btn btn-primary">Редактировать профиль</a></h1>
      </div>

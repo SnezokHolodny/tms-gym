@@ -52,10 +52,9 @@ def register(request):
             login(request, user)
             messages.success(request, "Вы зарегестрировались успешно.")
             return redirect('gyms:index')
-    else:
-        messages.error(request, "Нормально регайся!")
-        form = NewUserForm()
-        return render(request, "registration/register.html", context={"form": form})
+        else:
+            messages.error(request, "Нормально регайся!")
+            return render(request, "registration/register.html", context={"form": form})
 
 
 @login_required
@@ -80,7 +79,7 @@ def edit_profile(request, user_id):
             user.first_name = first_name
             user.last_name = last_name
             user.save()
-            return redirect('gyms:profile', user.id)
+            return redirect('gyms:personal_account', user.id)
     else:
         form = UserForm(instance=request.user)
     return render(request, 'gyms/edit_profile.html', {'form': form})
