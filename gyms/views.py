@@ -62,7 +62,7 @@ def register(request):
 def information_of_user(request, user_id):
     user = get_object_or_404(User, id=user_id)
     abonement = Abonement.objects.filter(profile=request.user.profile)
-    return render(request, 'gyms/personal_account', {'user': user, 'abonement':abonement})
+    return render(request, 'gyms/personal_account.html', {'user': user, 'abonement':abonement})
 
 
 @login_required
